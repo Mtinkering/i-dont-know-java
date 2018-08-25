@@ -11,6 +11,7 @@
  */
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Scanner;
 
@@ -29,7 +30,7 @@ class Node implements Comparable<Node> {
     }
 }
 
-public class lightOJCommandos {
+public class Commandos {
     private static final Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
@@ -40,9 +41,10 @@ public class lightOJCommandos {
             int testCase = test + 1;
             System.out.println("Case " + testCase + ": " + result);
         }
+        scanner.close();
     }
 
-    public static void dijkstra(int s, ArrayList<ArrayList<Node>> graph, int[] dist) {
+    public static void dijkstra(int s, List<List<Node>> graph, int[] dist) {
         PriorityQueue<Node> pq = new PriorityQueue<>();
         dist[s] = 0;
         pq.add(new Node(s, 0));
@@ -66,7 +68,7 @@ public class lightOJCommandos {
         int n = scanner.nextInt();
         int r = scanner.nextInt();
 
-        ArrayList<ArrayList<Node>> graph = new ArrayList<>();
+        List<List<Node>> graph = new ArrayList<>();
 
         for (int i = 0; i < n; i++) {
             graph.add(new ArrayList<Node>());
