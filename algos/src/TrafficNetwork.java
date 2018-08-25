@@ -15,20 +15,20 @@ import java.util.Scanner;
  * TimeComplexity: ElogV
  * SpaceComplexity:
  */
-class Node1 implements Comparable<Node1> {
-    public int id;
-    public Integer dist;
-
-    public Node1(int id, int dist) {
-        this.id = id;
-        this.dist = dist;
-    }
-
-    @Override
-    public int compareTo(Node1 o) {
-        return this.dist.compareTo(o.dist);
-    }
-}
+//class Node1 implements Comparable<Node1> {
+//    public int id;
+//    public Integer dist;
+//
+//    public Node1(int id, int dist) {
+//        this.id = id;
+//        this.dist = dist;
+//    }
+//
+//    @Override
+//    public int compareTo(Node1 o) {
+//        return this.dist.compareTo(o.dist);
+//    }
+//}
 
 public class TrafficNetwork {
     private static final Scanner scanner = new Scanner(System.in);
@@ -51,12 +51,12 @@ public class TrafficNetwork {
         int s = scanner.nextInt() - 1;
         int t = scanner.nextInt() - 1;
 
-        List<List<Node1>> graphFromS = new ArrayList<>();
-        List<List<Node1>> graphFromT = new ArrayList<>();
+        List<List<int[]>> graphFromS = new ArrayList<>();
+        List<List<int[]>> graphFromT = new ArrayList<>();
 
         for (int i = 0; i < n; i++) {
-            graphFromS.add(new ArrayList<Node1>());
-            graphFromT.add(new ArrayList<Node1>());
+            graphFromS.add(new ArrayList<int[]>());
+            graphFromT.add(new ArrayList<int[]>());
         }
 
         for (int i = 0; i < m; i++) {
@@ -64,8 +64,8 @@ public class TrafficNetwork {
             int c = scanner.nextInt() - 1;
             int l = scanner.nextInt();
 
-            graphFromS.get(d).add(new Node1(c, l));
-            graphFromT.get(c).add(new Node1(d, l));
+            graphFromS.get(d).add(new int[]{l,c});
+            graphFromT.get(c).add(new int[]{l, d});
         }
 
         List<int[]> proposals = new ArrayList<>();
@@ -101,24 +101,24 @@ public class TrafficNetwork {
         return answer;
     }
 
-    private static void shortestPath(int src, List<List<Node1>> graph, int[] dist) {
-        PriorityQueue<Node1> pq = new PriorityQueue<>();
-        pq.add(new Node1(src, 0));
+    private static void shortestPath(int src, List<List<int[]>> graph, int[] dist) {
+        PriorityQueue<int[]> pq = new PriorityQueue<>();
+        pq.add(new int[]{0, src});
         dist[src] = 0;
 
         while (!pq.isEmpty()) {
-            Node1 top = pq.poll();
-            int u = top.id;
-            int w = top.dist;
+            int[] top = pq.poll();
+            int u = top[0];
+            int w = top[1];
 
             if (w != dist[u]) {
                 continue;
             }
 
-            for (Node1 neighbor: graph.get(u)) {
-                if (w + neighbor.dist < dist[neighbor.id]) {
-                    pq.add(new Node1(neighbor.id, w+ neighbor.dist));
-                    dist[neighbor.id] = w+ neighbor.dist;
+            for (int[] neighbor: graph.get(u)) {
+                if (w + neighbor[0] < dist[neighbor[1]]) {
+                    pq.add(new int[]{w+ neighbor[0], neighbor[1]});
+                    dist[neighbor[1]] = w+ neighbor[0];
                 }
             }
         }
