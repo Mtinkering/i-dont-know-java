@@ -1,19 +1,5 @@
 import java.util.*;
 
-class Location implements Comparable<Location> {
-    public Integer id;
-    public Integer dist;
-
-    public Location(Integer id, Integer dist) {
-        this.id = id;
-        this.dist = dist;
-    }
-
-    @Override
-    public int compareTo(Location other) {
-        return this.dist.compareTo(other.dist);
-    }
-}
 
 public class AlmostShortestPath {
     private static final Scanner scanner = new Scanner(System.in);
@@ -128,5 +114,20 @@ public class AlmostShortestPath {
             m = scanner.nextInt();
         }
         scanner.close();
+    }
+
+    protected static class Location implements Comparable<Location> {
+        public Integer id;
+        public Integer dist;
+
+        public Location(Integer id, Integer dist) {
+            this.id = id;
+            this.dist = dist;
+        }
+
+        @Override
+        public int compareTo(Location other) {
+            return this.dist.compareTo(other.dist);
+        }
     }
 }

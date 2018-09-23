@@ -15,20 +15,6 @@ import java.util.Scanner;
  * TimeComplexity: ElogV
  * SpaceComplexity:
  */
-class Node1 implements Comparable<Node1> {
-    public int id;
-    public Integer dist;
-
-    public Node1(int id, int dist) {
-        this.id = id;
-        this.dist = dist;
-    }
-
-    @Override
-    public int compareTo(Node1 o) {
-        return this.dist.compareTo(o.dist);
-    }
-}
 
 public class TrafficNetwork {
     private static final Scanner scanner = new Scanner(System.in);
@@ -121,6 +107,21 @@ public class TrafficNetwork {
                     dist[neighbor.id] = w+ neighbor.dist;
                 }
             }
+        }
+    }
+
+    protected static class Node1 implements Comparable<Node1> {
+        public int id;
+        public Integer dist;
+
+        public Node1(int id, int dist) {
+            this.id = id;
+            this.dist = dist;
+        }
+
+        @Override
+        public int compareTo(Node1 o) {
+            return this.dist.compareTo(o.dist);
         }
     }
 }

@@ -15,20 +15,7 @@ import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Scanner;
 
-class Node implements Comparable<Node> {
-    public Integer id;
-    public Integer dist;
 
-    public Node(Integer id, Integer dist) {
-        this.id = id;
-        this.dist = dist;
-    }
-
-    @Override
-    public int compareTo(Node other) {
-        return this.dist.compareTo(other.dist);
-    }
-}
 
 public class Commandos {
     private static final Scanner scanner = new Scanner(System.in);
@@ -103,5 +90,20 @@ public class Commandos {
         }
 
         return total;
+    }
+
+    protected static class Node implements Comparable<Node> {
+        public Integer id;
+        public Integer dist;
+
+        public Node(Integer id, Integer dist) {
+            this.id = id;
+            this.dist = dist;
+        }
+
+        @Override
+        public int compareTo(Node other) {
+            return this.dist.compareTo(other.dist);
+        }
     }
 }
