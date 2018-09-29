@@ -24,7 +24,7 @@ public class ParseTernary {
         for (int i = expression.length() - 1; i >= 0; i--) {
             char c = expression.charAt(i);
             if (!stack.isEmpty() && stack.peek() == '?') {
-                stack.pop();
+                stack .pop();
                 char first = stack.pop();
                 stack.pop();
                 char second = stack.pop();
