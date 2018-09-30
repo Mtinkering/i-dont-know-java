@@ -25,35 +25,35 @@ public class OnlineStockSpan {
     }
 
     protected static class StockSpanner{
-        Stack<int[]> stack;
-        Stack<int[]> maximaStack;
+        Stack<Integer> stack;
+        List<Integer> prices;
+        int cur;
 
         public StockSpanner() {
-            this.stack = new Stack<>();
-            this.maximaStack = new Stack<>();
+            stack = new Stack<>();
+            prices = new ArrayList<>();
+            cur = 0;
         }
 
         public int next(int price) {
+            prices.add(price);
+            cur += 1;
 
-            if (stack.size() != 0) {
-                if (price >= stack.peek()[0]) {
-                    stack.push(new int[] {price, stack.peek()[1] + 1});
-                } else {
-                    stack.push(new int[] {price, 1});
-
-                    // Switch point
-                    maximaStack.push(stack.peek());
-                }
-            } else {
-                stack.push(new int[]{ price, 1});
-                maximaStack.push(new int[]{ price, 1});
+            while (!stack.isEmpty() && prices.get(stack.peek() - 1) <= price) {
+                stack.pop();
             }
 
-            if (maximaStack.size() != 0 && stack.peek()[0] >= maximaStack.peek()[0]) {
-                return stack.peek()[1] + maximaStack.peek()[1];
+            int top;
+            if (!stack.isEmpty()) {
+                top = stack.peek();
             } else {
-                return stack.peek()[1];
+                top = 0;
             }
+
+            stack.push(cur);
+
+
+            return cur - top;
         }
     }
 }

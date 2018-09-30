@@ -22,7 +22,7 @@ public class DailyTemperatures {
             } else {
                 result[i] = 0;
             }
-
+//            stack.push(new int[] {cur, i});
             stack.push(i);
         }
 
