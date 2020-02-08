@@ -1,7 +1,10 @@
 package com.interview;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Stack;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 class SolutionTest {
 	private final int[][] deltas = {{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
@@ -85,5 +88,21 @@ class SolutionTest {
 		dfs(image, visited,  sr, sc, newColor);
 
 		return image;
+	}
+
+	public static void main(String[] args) {
+//		Integer[] anArray = new Integer[]{1,2,3};
+//		List<Integer> li = Arrays.asList(anArray);
+//
+//		li.add(2);
+
+		String[] anArrayStr = new String[]{"hi", "there"};
+		Stream<String> ss = Arrays.stream(anArrayStr);
+
+		int[] intArray = new int[]{1,2};
+		List<Integer> st = Arrays.stream(intArray).boxed().collect(Collectors.toList());
+		st.add(1);
+
+		
 	}
 }

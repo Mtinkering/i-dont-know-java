@@ -1,11 +1,10 @@
 package com.interview;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
-public class DFSRecur {
+public class DepthFirstSearchRecursion {
 	private static List<ArrayList<Integer>> graph;
 	private static int V;
 	private static int E;

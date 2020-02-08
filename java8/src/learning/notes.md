@@ -7,7 +7,7 @@ To learn:
 - Default method
 
 
-## Type parameter
+## Type parameter - Generics Type param has to be Object
 
 ```
 Stack<Integer> st = new Stack<>();
