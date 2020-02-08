@@ -35,7 +35,7 @@ public class DepthFirstSearch {
 
 				if (!visited.get(v)) {
 					visited.set(v, true);
-					stack.add(v);
+					stack.push(v);
 				}
 			}
 		}
