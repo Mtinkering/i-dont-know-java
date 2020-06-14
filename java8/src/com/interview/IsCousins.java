@@ -1,12 +1,17 @@
 package com.interview;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
+// Remember: with Tree, we don't need visited.
+// Only needed due to graph having cycles
 public class IsCousins {
 	public boolean isCousins(TreeNode root, int x, int y) {
 		// Do BFS
 		Queue<TreeNode> q = new LinkedList<>();
+		List<List<Integer>> res = new ArrayList<>();
 		int[] levels = new int[101];
 		int xp = -1;
 		int yp = -2;

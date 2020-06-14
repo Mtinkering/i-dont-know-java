@@ -1,6 +1,9 @@
 package com.interview;
 
+import java.security.Key;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 public class SubStringSearch {
 	private int[] computeLPS(char[] pattern) {
@@ -24,6 +27,8 @@ public class SubStringSearch {
 				}
 			}
 		}
+
+//		Map.Entry<Key, Value> x = new HashMap<>().entrySet()
 
 		return lps;
 	}
@@ -54,7 +59,7 @@ public class SubStringSearch {
 		return false;
 	}
 
-	public static void main(String[] args) {
+		public static void main(String[] args) {
 		String str = "abcabcdefx";
 		String substring = "aabaabaaa";
 

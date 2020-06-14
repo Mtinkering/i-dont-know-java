@@ -21,7 +21,7 @@ public class SubStringSearchKMP {
 				if (j == 0) {
 					i++;
 				} else {
-//					j = pattern.charAt(j - 1);
+					// j = pattern.charAt(j - 1);
 					// this minus one is because we are dealing with longest prefix suffix table.
 					// so minus one means one less
 					j = table[j - 1];
